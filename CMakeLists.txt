@@ -8,13 +8,13 @@ SET(CMAKE_CXX_COMPILER "g++")
 SET(CMAKE_C_COMPILER "gcc")
 
 # C++ compiler flags
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread" )
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -pedantic" )
 
-# set source dir and test dir
-SET(SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
+# set source dir
+SET(SOURCE_DIR
+    ${PROJECT_SOURCE_DIR}/src)
  
-# add the binary tree to the search path for include files
-# so that we will find TutorialConfig.h
+# include directories
 INCLUDE_DIRECTORIES(
     ${SOURCE_DIR}
 )
