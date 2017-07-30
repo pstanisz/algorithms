@@ -8,6 +8,7 @@
 
 #include "utils.hh"
 #include "sorting.hh"
+#include "binarysearching.hh"
 
 int main()
 {
@@ -80,6 +81,24 @@ int main()
         auto middleIter2 = Utils::getMiddleIterator(testVec2);
         Sorting::doNthElement(testVec2, middleIter2);
     }
+
+    // Lower bound
+    {
+        std::cout << std::endl << "lower_bound check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        std::sort(testVec1.begin(), testVec1.end());
+
+        auto middleIter1 = Utils::getMiddleIterator(testVec1);
+        BinarySearching::doLowerBound(testVec1, *middleIter1);
+
+        auto testVec2(testVecInput2);
+        std::sort(testVec2.begin(), testVec2.end());
+
+        auto middleIter2 = Utils::getMiddleIterator(testVec2);
+        BinarySearching::doLowerBound(testVec2, *middleIter2);
+    }
+
 
     return EXIT_SUCCESS;
 }

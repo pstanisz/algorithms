@@ -35,6 +35,30 @@ void print(const T& container, std::string prefix = std::string(""))
 }
 
 template <typename T>
+void print(const T& container, typename T::const_iterator position,
+           std::string prefix = std::string(""))
+{
+    if (!prefix.empty())
+    {
+        std::cout << prefix << ":\t";
+    }
+
+    for(auto iter = container.begin(); iter < container.end(); ++iter)
+    {
+        if (iter == position)
+        {
+            std::cout << ">>" << *iter << "<< ";
+        }
+        else
+        {
+            std::cout << *iter << " ";
+        }
+    }
+
+    std::cout << std::endl;
+}
+
+template <typename T>
 typename T::iterator getMiddleIterator(T& container)
 {
     auto middle = container.begin();
