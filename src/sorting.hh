@@ -5,11 +5,14 @@
 
 #include "utils.hh"
 
-namespace SortingAlgorithms
+namespace Algorithms
+{
+
+namespace Sorting
 {
 
 template<typename T>
-void checkSort(T& container)
+void doSort(T& container)
 {
     Utils::print(container, "Input");
 
@@ -21,7 +24,7 @@ void checkSort(T& container)
 }
 
 template<typename T>
-void checkStableSort(T& container)
+void doStableSort(T& container)
 {
     Utils::print(container, "Input");
 
@@ -34,12 +37,10 @@ void checkStableSort(T& container)
 }
 
 template<typename T>
-void checkPartialSort(T& container)
+void doPartialSort(T& container, typename T::iterator& middle)
 {
     Utils::print(container, "Input");
 
-    typename T::iterator middle = container.begin();
-    std::advance(middle, container.size()/2);
     std::partial_sort(container.begin(), middle, container.end());
 
     Utils::print(container, "Output");
@@ -54,13 +55,12 @@ void checkPartialSort(T& container)
 }
 
 template<typename T>
-void checkPartialSortCopy(T& container)
+void doPartialSortCopy(T& container, typename T::iterator& middle)
 {
     Utils::print(container, "Input");
 
     T outContainer;
-    typename T::iterator middle = container.begin();
-    std::advance(middle, container.size()/2);
+
     std::copy(container.begin(), middle, std::back_inserter(outContainer));
     std::partial_sort_copy(container.begin(), container.end(),
                            outContainer.begin(), outContainer.end());
@@ -72,17 +72,17 @@ void checkPartialSortCopy(T& container)
 
 
 template<typename T>
-void checkNthElement(T& container)
+void doNthElement(T& container, typename T::iterator& middle)
 {
     Utils::print(container, "Input");
 
-    typename T::iterator middle = container.begin();
-    std::advance(middle, container.size()/2);
     std::nth_element(container.begin(), middle, container.end());
 
     Utils::print(container, "Output");
 
     assert(std::is_sorted(container.begin(), container.end()) != true);
+}
+
 }
 
 }

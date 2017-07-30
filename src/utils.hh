@@ -2,6 +2,10 @@
 
 #include <utility>
 #include <iostream>
+#include <algorithm>
+
+namespace Algorithms
+{
 
 namespace Utils
 {
@@ -28,6 +32,17 @@ void print(const T& container, std::string prefix = std::string(""))
     }
 
     std::cout << std::endl;
+}
+
+template <typename T>
+typename T::iterator getMiddleIterator(T& container)
+{
+    auto middle = container.begin();
+    std::advance(middle, container.size()/2);
+
+    return middle;
+}
+
 }
 
 }
