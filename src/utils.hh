@@ -47,7 +47,7 @@ void print(const T& container, typename T::const_iterator position,
     {
         if (iter == position)
         {
-            std::cout << ">>" << *iter << "<< ";
+            std::cout << ">> " << *iter << " << ";
         }
         else
         {
@@ -56,6 +56,45 @@ void print(const T& container, typename T::const_iterator position,
     }
 
     std::cout << std::endl;
+}
+
+template <typename T>
+void print(const T& container, typename T::const_iterator first, typename T::const_iterator second,
+           std::string prefix = std::string(""))
+{
+    if (!prefix.empty())
+    {
+        std::cout << prefix << ":\t";
+    }
+
+    for(auto iter = container.begin(); iter < container.end(); ++iter)
+    {
+        if (iter == first)
+        {
+            std::cout << ">> " << *iter << " ";
+        }
+        else if (iter == second)
+        {
+            std::cout << "<< " << *iter << " ";
+        }
+        else
+        {
+            std::cout << *iter << " ";
+        }
+    }
+
+    std::cout << std::endl;
+}
+
+template <>
+void print<const bool&>(const bool& result, std::string prefix)
+{
+    if (!prefix.empty())
+    {
+        std::cout << prefix << ":\t";
+    }
+
+    std::cout << std::boolalpha << result << std::noboolalpha << std::endl;
 }
 
 template <typename T>

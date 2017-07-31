@@ -89,16 +89,58 @@ int main()
         auto testVec1(testVecInput1);
         std::sort(testVec1.begin(), testVec1.end());
 
-        auto middleIter1 = Utils::getMiddleIterator(testVec1);
-        BinarySearching::doLowerBound(testVec1, *middleIter1);
+        BinarySearching::doLowerBound(testVec1, 4);
 
         auto testVec2(testVecInput2);
         std::sort(testVec2.begin(), testVec2.end());
 
-        auto middleIter2 = Utils::getMiddleIterator(testVec2);
-        BinarySearching::doLowerBound(testVec2, *middleIter2);
+        BinarySearching::doLowerBound(testVec2, std::make_pair(3, 'b'));
     }
 
+    // Upper bound
+    {
+        std::cout << std::endl << "upper_bound check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        std::sort(testVec1.begin(), testVec1.end());
+
+        BinarySearching::doUpperBound(testVec1, 4);
+
+        auto testVec2(testVecInput2);
+        std::sort(testVec2.begin(), testVec2.end());
+
+        BinarySearching::doUpperBound(testVec2, std::make_pair(3, 'b'));
+    }
+
+    // Equal range
+    {
+        std::cout << std::endl << "equal_range check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        std::sort(testVec1.begin(), testVec1.end());
+
+        BinarySearching::doEqualRange(testVec1, 3);
+
+        auto testVec2(testVecInput2);
+        std::sort(testVec2.begin(), testVec2.end());
+
+        BinarySearching::doEqualRange(testVec2, std::make_pair(3, 'b'));
+    }
+
+    // Binary search
+    {
+        std::cout << std::endl << "binary_search check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        std::sort(testVec1.begin(), testVec1.end());
+
+        BinarySearching::doBinarySearch(testVec1, 3);
+
+        auto testVec2(testVecInput2);
+        std::sort(testVec2.begin(), testVec2.end());
+
+        BinarySearching::doBinarySearch(testVec2, std::make_pair(3, 'b'));
+    }
 
     return EXIT_SUCCESS;
 }

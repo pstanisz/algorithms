@@ -18,7 +18,7 @@ void doSort(T& container)
 
     std::sort(container.begin(), container.end());
 
-    Utils::print(container, "Output");
+    Utils::print(container, "Sorted");
 
     assert(std::is_sorted(container.begin(), container.end()) == true);
 }
@@ -30,7 +30,7 @@ void doStableSort(T& container)
 
     std::stable_sort(container.begin(), container.end());
 
-    Utils::print(container, "Output");
+    Utils::print(container, "Sorted");
 
     assert(std::is_sorted(container.begin(), container.end()) == true);
 
@@ -43,7 +43,7 @@ void doPartialSort(T& container, typename T::iterator& middle)
 
     std::partial_sort(container.begin(), middle, container.end());
 
-    Utils::print(container, "Output");
+    Utils::print(container, "Sorted");
 
     assert(std::is_sorted(container.begin(), container.end()) != true);
 
@@ -65,7 +65,7 @@ void doPartialSortCopy(T& container, typename T::iterator& middle)
     std::partial_sort_copy(container.begin(), container.end(),
                            outContainer.begin(), outContainer.end());
 
-    Utils::print(outContainer, "Output");
+    Utils::print(outContainer, "Sorted");
 
     assert(std::is_sorted(outContainer.begin(), outContainer.end()) == true);
 }
@@ -78,7 +78,7 @@ void doNthElement(T& container, typename T::iterator& middle)
 
     std::nth_element(container.begin(), middle, container.end());
 
-    Utils::print(container, "Output");
+    Utils::print(container, middle, "Nth");
 
     assert(std::is_sorted(container.begin(), container.end()) != true);
 }
