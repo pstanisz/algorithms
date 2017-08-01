@@ -14,11 +14,11 @@ namespace Sorting
 template<typename T>
 void doSort(T& container)
 {
-    Utils::print(container, "Input");
+    Utils::printContainer(container, "Input");
 
     std::sort(container.begin(), container.end());
 
-    Utils::print(container, "Sorted");
+    Utils::printContainer(container, "Sorted");
 
     assert(std::is_sorted(container.begin(), container.end()) == true);
 }
@@ -26,11 +26,11 @@ void doSort(T& container)
 template<typename T>
 void doStableSort(T& container)
 {
-    Utils::print(container, "Input");
+    Utils::printContainer(container, "Input");
 
     std::stable_sort(container.begin(), container.end());
 
-    Utils::print(container, "Sorted");
+    Utils::printContainer(container, "Sorted");
 
     assert(std::is_sorted(container.begin(), container.end()) == true);
 
@@ -39,11 +39,11 @@ void doStableSort(T& container)
 template<typename T>
 void doPartialSort(T& container, typename T::iterator& middle)
 {
-    Utils::print(container, "Input");
+    Utils::printContainer(container, "Input");
 
     std::partial_sort(container.begin(), middle, container.end());
 
-    Utils::print(container, "Sorted");
+    Utils::printContainer(container, "Sorted");
 
     assert(std::is_sorted(container.begin(), container.end()) != true);
 
@@ -57,7 +57,7 @@ void doPartialSort(T& container, typename T::iterator& middle)
 template<typename T>
 void doPartialSortCopy(T& container, typename T::iterator& middle)
 {
-    Utils::print(container, "Input");
+    Utils::printContainer(container, "Input");
 
     T outContainer;
 
@@ -65,7 +65,7 @@ void doPartialSortCopy(T& container, typename T::iterator& middle)
     std::partial_sort_copy(container.begin(), container.end(),
                            outContainer.begin(), outContainer.end());
 
-    Utils::print(outContainer, "Sorted");
+    Utils::printContainer(outContainer, "Sorted");
 
     assert(std::is_sorted(outContainer.begin(), outContainer.end()) == true);
 }
@@ -74,11 +74,11 @@ void doPartialSortCopy(T& container, typename T::iterator& middle)
 template<typename T>
 void doNthElement(T& container, typename T::iterator& middle)
 {
-    Utils::print(container, "Input");
+    Utils::printContainer(container, "Input");
 
     std::nth_element(container.begin(), middle, container.end());
 
-    Utils::print(container, middle, "Nth");
+    Utils::highlightSingle(container, middle, "Nth");
 
     assert(std::is_sorted(container.begin(), container.end()) != true);
 }

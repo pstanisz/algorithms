@@ -10,6 +10,9 @@ namespace Algorithms
 namespace Utils
 {
 
+const char* UNDERLINED      = "\33[4m";
+const char* NO_UNDERLINED   = "\33[0m";
+
 template <typename T, typename U>
 std::ostream& operator<<(std::ostream& stream, const std::pair<T, U>& item)
 {
@@ -19,7 +22,7 @@ std::ostream& operator<<(std::ostream& stream, const std::pair<T, U>& item)
 }
 
 template <typename T>
-void print(const T& container, std::string prefix = std::string(""))
+void printContainer(const T& container, std::string prefix = std::string(""))
 {
     if (!prefix.empty())
     {
@@ -35,8 +38,9 @@ void print(const T& container, std::string prefix = std::string(""))
 }
 
 template <typename T>
-void print(const T& container, typename T::const_iterator position,
-           std::string prefix = std::string(""))
+void highlightSingle(const T& container,
+                    typename T::const_iterator position,
+                    std::string prefix = std::string(""))
 {
     if (!prefix.empty())
     {
@@ -47,47 +51,65 @@ void print(const T& container, typename T::const_iterator position,
     {
         if (iter == position)
         {
-            std::cout << ">> " << *iter << " << ";
+            std::cout << UNDERLINED << *iter << NO_UNDERLINED;
         }
         else
         {
-            std::cout << *iter << " ";
+            std::cout << *iter;
         }
+
+        std::cout << " ";
     }
 
     std::cout << std::endl;
 }
 
 template <typename T>
-void print(const T& container, typename T::const_iterator first, typename T::const_iterator second,
-           std::string prefix = std::string(""))
+void highlightRange(const T& container,
+                    typename T::const_iterator first,
+                    typename T::const_iterator second,
+                    std::string prefix = std::string(""))
 {
     if (!prefix.empty())
     {
         std::cout << prefix << ":\t";
     }
 
-    for(auto iter = container.begin(); iter < container.end(); ++iter)
+    for (auto iter = container.begin(); iter < container.end();)
     {
         if (iter == first)
         {
-            std::cout << ">> " << *iter << " ";
-        }
-        else if (iter == second)
-        {
-            std::cout << "<< " << *iter << " ";
+            std::cout << UNDERLINED << *iter;
         }
         else
         {
-            std::cout << *iter << " ";
+            std::cout << *iter;
         }
+
+        if (++iter == second)
+        {
+            std::cout << NO_UNDERLINED;
+        }
+
+        std::cout << " ";
     }
 
     std::cout << std::endl;
 }
 
+template <typename T>
+void printResult(T result, std::string prefix)
+{
+    if (!prefix.empty())
+    {
+        std::cout << prefix << ":\t";
+    }
+
+    std::cout << result << std::endl;
+}
+
 template <>
-void print<const bool&>(const bool& result, std::string prefix)
+void printResult<bool>(bool result, std::string prefix)
 {
     if (!prefix.empty())
     {

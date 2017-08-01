@@ -9,6 +9,7 @@
 #include "utils.hh"
 #include "sorting.hh"
 #include "binarysearching.hh"
+#include "merging.hh"
 
 int main()
 {
@@ -17,9 +18,12 @@ int main()
     std::cout << "Sandbox for checking various STL algorithms" << std::endl;
 
     const std::vector<int> testVecInput1 { 1, 3, 2, 8, 3, 6, 8, 1, 4, 9 };
-    const std::vector<std::pair<int, char>> testVecInput2 { {1, 'a'}, {3, 'b'}, {2, 'c'}, {8, 'd'},
+    const std::vector<int> testVecInput2 { 3, 6, 9, 1, 2, 8, 3 };
+
+    const std::vector<std::pair<int, char>> testVecInput3 { {1, 'a'}, {3, 'b'}, {2, 'c'}, {8, 'd'},
                                                             {3, 'e'}, {6, 'f'}, {8, 'g'}, {1, 'h'},
                                                             {4, 'i'}, {9, 'j'}};
+    const std::vector<std::pair<int, char>> testVecInput4 { {3, 'k'}, {7, 'l'}};
 
     // Ordinary sort
     {
@@ -28,8 +32,8 @@ int main()
         auto testVec1(testVecInput1);
         Sorting::doSort(testVec1);
 
-        auto testVec2(testVecInput2);
-        Sorting::doSort(testVec2);
+        auto testVec3(testVecInput3);
+        Sorting::doSort(testVec3);
     }
 
     // Stable sort
@@ -39,8 +43,8 @@ int main()
         auto testVec1(testVecInput1);
         Sorting::doStableSort(testVec1);
 
-        auto testVec2(testVecInput2);
-        Sorting::doStableSort(testVec2);
+        auto testVec3(testVecInput3);
+        Sorting::doStableSort(testVec3);
     }
 
     // Partial sort
@@ -51,9 +55,9 @@ int main()
         auto middleIter1 = Utils::getMiddleIterator(testVec1);
         Sorting::doPartialSort(testVec1, middleIter1);
 
-        auto testVec2(testVecInput2);
-        auto middleIter2 = Utils::getMiddleIterator(testVec2);
-        Sorting::doPartialSort(testVec2, middleIter2);
+        auto testVec3(testVecInput3);
+        auto middleIter2 = Utils::getMiddleIterator(testVec3);
+        Sorting::doPartialSort(testVec3, middleIter2);
     }
 
     // Partial sort copy
@@ -64,9 +68,9 @@ int main()
         auto middleIter1 = Utils::getMiddleIterator(testVec1);
         Sorting::doPartialSortCopy(testVec1, middleIter1);
 
-        auto testVec2(testVecInput2);
-        auto middleIter2 = Utils::getMiddleIterator(testVec2);
-        Sorting::doPartialSortCopy(testVec2, middleIter2);
+        auto testVec3(testVecInput3);
+        auto middleIter2 = Utils::getMiddleIterator(testVec3);
+        Sorting::doPartialSortCopy(testVec3, middleIter2);
     }
 
     // Nth element
@@ -77,9 +81,9 @@ int main()
         auto middleIter1 = Utils::getMiddleIterator(testVec1);
         Sorting::doNthElement(testVec1, middleIter1);
 
-        auto testVec2(testVecInput2);
-        auto middleIter2 = Utils::getMiddleIterator(testVec2);
-        Sorting::doNthElement(testVec2, middleIter2);
+        auto testVec3(testVecInput3);
+        auto middleIter2 = Utils::getMiddleIterator(testVec3);
+        Sorting::doNthElement(testVec3, middleIter2);
     }
 
     // Lower bound
@@ -91,10 +95,10 @@ int main()
 
         BinarySearching::doLowerBound(testVec1, 4);
 
-        auto testVec2(testVecInput2);
-        std::sort(testVec2.begin(), testVec2.end());
+        auto testVec3(testVecInput3);
+        std::sort(testVec3.begin(), testVec3.end());
 
-        BinarySearching::doLowerBound(testVec2, std::make_pair(3, 'b'));
+        BinarySearching::doLowerBound(testVec3, std::make_pair(3, 'b'));
     }
 
     // Upper bound
@@ -106,10 +110,10 @@ int main()
 
         BinarySearching::doUpperBound(testVec1, 4);
 
-        auto testVec2(testVecInput2);
-        std::sort(testVec2.begin(), testVec2.end());
+        auto testVec3(testVecInput3);
+        std::sort(testVec3.begin(), testVec3.end());
 
-        BinarySearching::doUpperBound(testVec2, std::make_pair(3, 'b'));
+        BinarySearching::doUpperBound(testVec3, std::make_pair(3, 'b'));
     }
 
     // Equal range
@@ -121,10 +125,10 @@ int main()
 
         BinarySearching::doEqualRange(testVec1, 3);
 
-        auto testVec2(testVecInput2);
-        std::sort(testVec2.begin(), testVec2.end());
+        auto testVec3(testVecInput3);
+        std::sort(testVec3.begin(), testVec3.end());
 
-        BinarySearching::doEqualRange(testVec2, std::make_pair(3, 'b'));
+        BinarySearching::doEqualRange(testVec3, std::make_pair(3, 'b'));
     }
 
     // Binary search
@@ -136,10 +140,31 @@ int main()
 
         BinarySearching::doBinarySearch(testVec1, 3);
 
+        auto testVec3(testVecInput3);
+        std::sort(testVec3.begin(), testVec3.end());
+
+        BinarySearching::doBinarySearch(testVec3, std::make_pair(3, 'b'));
+    }
+
+    // Merge
+    {
+        std::cout << std::endl << "merge check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        std::sort(testVec1.begin(), testVec1.end());
+
         auto testVec2(testVecInput2);
         std::sort(testVec2.begin(), testVec2.end());
 
-        BinarySearching::doBinarySearch(testVec2, std::make_pair(3, 'b'));
+        Merging::doMerge(testVec1, testVec2);
+
+        auto testVec3(testVecInput3);
+        std::sort(testVec3.begin(), testVec3.end());
+
+        auto testVec4(testVecInput4);
+        std::sort(testVec4.begin(), testVec4.end());
+
+        Merging::doMerge(testVec3, testVec4);
     }
 
     return EXIT_SUCCESS;
