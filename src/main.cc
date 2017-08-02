@@ -20,9 +20,9 @@ int main()
     const std::vector<int> testVecInput1 { 1, 3, 2, 8, 3, 6, 8, 1, 4, 9 };
     const std::vector<int> testVecInput2 { 3, 6, 9, 1, 2, 8, 3 };
 
-    const std::vector<std::pair<int, char>> testVecInput3 { {1, 'a'}, {3, 'b'}, {2, 'c'}, {8, 'd'},
-                                                            {3, 'e'}, {6, 'f'}, {8, 'g'}, {1, 'h'},
-                                                            {4, 'i'}, {9, 'j'}};
+    const std::vector<std::pair<int, char>> testVecInput3 { {3, 'a'}, {1, 'b'}, {2, 'c'}, {9, 'd'},
+                                                            {7, 'e'}, {4, 'f'}, {3, 'g'}, {4, 'h'},
+                                                            {8, 'i'}, {7, 'j'}};
     const std::vector<std::pair<int, char>> testVecInput4 { {3, 'k'}, {7, 'l'}};
 
     // Ordinary sort
@@ -128,7 +128,7 @@ int main()
         auto testVec3(testVecInput3);
         std::sort(testVec3.begin(), testVec3.end());
 
-        BinarySearching::doEqualRange(testVec3, std::make_pair(3, 'b'));
+        BinarySearching::doEqualRange(testVec3, std::make_pair(3, 'g'));
     }
 
     // Binary search
@@ -165,6 +165,25 @@ int main()
         std::sort(testVec4.begin(), testVec4.end());
 
         Merging::doMerge(testVec3, testVec4);
+    }
+
+    // Inplace mMerge
+    {
+        std::cout << std::endl << "inplace merge check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        auto middleIter1 = Utils::getMiddleIterator(testVec1);
+        std::sort(testVec1.begin(), middleIter1);
+        std::sort(middleIter1, testVec1.end());
+
+        Merging::doInplaceMerge(testVec1, middleIter1);
+
+        auto testVec3(testVecInput3);
+        auto middleIter3 = Utils::getMiddleIterator(testVec3);
+        std::sort(testVec3.begin(), middleIter3);
+        std::sort(middleIter3, testVec3.end());
+
+        Merging::doInplaceMerge(testVec3, middleIter3);
     }
 
     return EXIT_SUCCESS;

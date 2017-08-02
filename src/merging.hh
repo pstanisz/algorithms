@@ -25,6 +25,16 @@ void doMerge(const T& container1, const U& container2)
     Utils::printContainer(outContainer, "Output");
 }
 
+template<typename T>
+void doInplaceMerge(T& container, typename T::iterator& middle)
+{
+    Utils::printContainer(container, "Input");
+
+    std::inplace_merge(container.begin(), middle, container.end());
+
+    Utils::printContainer(container, "Output");
+}
+
 }
 
 }
