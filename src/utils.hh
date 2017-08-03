@@ -3,6 +3,7 @@
 #include <utility>
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 
 namespace Algorithms
 {
@@ -12,6 +13,24 @@ namespace Utils
 
 const char* UNDERLINED      = "\33[4m";
 const char* NO_UNDERLINED   = "\33[0m";
+
+struct Printer
+{
+    std::string operator()()
+    {
+        return mSstream.str();
+    }
+
+    template<typename T, typename... Args>
+    std::string operator()(T value, Args... args)
+    {
+        mSstream << value;
+
+        return operator()(args...);
+    }
+
+     std::stringstream mSstream;
+};
 
 template <typename T, typename U>
 std::ostream& operator<<(std::ostream& stream, const std::pair<T, U>& item)

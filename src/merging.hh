@@ -28,7 +28,7 @@ void doMerge(const T& container1, const U& container2)
 template<typename T>
 void doInplaceMerge(T& container, typename T::iterator& middle)
 {
-    Utils::printContainer(container, "Input");
+    Utils::highlightSingle(container, middle, "Input");
 
     std::inplace_merge(container.begin(), middle, container.end());
 

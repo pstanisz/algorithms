@@ -14,7 +14,7 @@ namespace BinarySearching
 template<typename T>
 void doLowerBound(T& container, typename T::value_type value)
 {
-    Utils::printContainer(container, "Input");
+    Utils::printContainer(container, Utils::Printer()("Lower bound ", value));
 
     auto result = std::lower_bound(container.begin(), container.end(), value);
 
@@ -24,7 +24,7 @@ void doLowerBound(T& container, typename T::value_type value)
 template<typename T>
 void doUpperBound(T& container, typename T::value_type value)
 {
-    Utils::printContainer(container, "Input");
+    Utils::printContainer(container, Utils::Printer()("Upper bound ", value));
 
     auto result = std::upper_bound(container.begin(), container.end(), value);
 
@@ -34,7 +34,7 @@ void doUpperBound(T& container, typename T::value_type value)
 template<typename T>
 void doEqualRange(T& container, typename T::value_type value)
 {
-    Utils::printContainer(container, "Input");
+    Utils::printContainer(container, Utils::Printer()("Equal ", value));
 
     auto result = std::equal_range(container.begin(), container.end(), value);
 
@@ -44,7 +44,7 @@ void doEqualRange(T& container, typename T::value_type value)
 template<typename T>
 void doBinarySearch(T& container, const typename T::value_type& value)
 {
-    Utils::printContainer(container, "Input");
+    Utils::printContainer(container, Utils::Printer()("Search ", value));
 
     auto result = std::binary_search(container.begin(), container.end(), value);
 

@@ -39,7 +39,7 @@ void doStableSort(T& container)
 template<typename T>
 void doPartialSort(T& container, typename T::iterator& middle)
 {
-    Utils::printContainer(container, "Input");
+    Utils::highlightSingle(container, middle, "Input");
 
     std::partial_sort(container.begin(), middle, container.end());
 
@@ -57,7 +57,7 @@ void doPartialSort(T& container, typename T::iterator& middle)
 template<typename T>
 void doPartialSortCopy(T& container, typename T::iterator& middle)
 {
-    Utils::printContainer(container, "Input");
+    Utils::highlightSingle(container, middle, "Input");
 
     T outContainer;
 
@@ -74,7 +74,7 @@ void doPartialSortCopy(T& container, typename T::iterator& middle)
 template<typename T>
 void doNthElement(T& container, typename T::iterator& middle)
 {
-    Utils::printContainer(container, "Input");
+    Utils::highlightSingle(container, middle, "Input");
 
     std::nth_element(container.begin(), middle, container.end());
 
