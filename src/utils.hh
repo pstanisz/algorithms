@@ -45,7 +45,7 @@ void printContainer(const T& container, std::string prefix = std::string(""))
 {
     if (!prefix.empty())
     {
-        std::cout << prefix << ":\t";
+        std::cout << prefix << ": ";
     }
 
     for(auto item : container)
@@ -63,7 +63,7 @@ void highlightSingle(const T& container,
 {
     if (!prefix.empty())
     {
-        std::cout << prefix << ":\t";
+        std::cout << prefix << ": ";
     }
 
     for(auto iter = container.begin(); iter < container.end(); ++iter)
@@ -91,7 +91,7 @@ void highlightRange(const T& container,
 {
     if (!prefix.empty())
     {
-        std::cout << prefix << ":\t";
+        std::cout << prefix << ": ";
     }
 
     for (auto iter = container.begin(); iter < container.end();)
@@ -121,7 +121,7 @@ void printResult(T result, std::string prefix)
 {
     if (!prefix.empty())
     {
-        std::cout << prefix << ":\t";
+        std::cout << prefix << ": ";
     }
 
     std::cout << result << std::endl;
@@ -132,7 +132,7 @@ void printResult<bool>(bool result, std::string prefix)
 {
     if (!prefix.empty())
     {
-        std::cout << prefix << ":\t";
+        std::cout << prefix << ": ";
     }
 
     std::cout << std::boolalpha << result << std::noboolalpha << std::endl;

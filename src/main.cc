@@ -10,6 +10,7 @@
 #include "sorting.hh"
 #include "binarysearching.hh"
 #include "merging.hh"
+#include "set.hh"
 
 int main()
 {
@@ -167,7 +168,7 @@ int main()
         Merging::doMerge(testVec3, testVec4);
     }
 
-    // Inplace mMerge
+    // Inplace merge
     {
         std::cout << std::endl << "inplace merge check" << std::endl;
 
@@ -184,6 +185,25 @@ int main()
         std::sort(middleIter3, testVec3.end());
 
         Merging::doInplaceMerge(testVec3, middleIter3);
+    }
+
+    // Includes
+    {
+        std::cout << std::endl << "includes check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        auto testVec2(testVecInput2);
+        std::sort(testVec1.begin(), testVec1.end());
+        std::sort(testVec2.begin(), testVec2.end());
+
+        Set::doIncludes(testVec1, testVec2);
+
+        auto testVec3(testVecInput3);
+        auto testVec4(testVecInput4);
+        std::sort(testVec3.begin(), testVec3.end());
+        std::sort(testVec4.begin(), testVec4.end());
+
+        Set::doIncludes(testVec3, testVec4);
     }
 
     return EXIT_SUCCESS;
