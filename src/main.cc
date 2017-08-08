@@ -206,5 +206,81 @@ int main()
         Set::doIncludes(testVec3, testVec4);
     }
 
+    // Set union
+    {
+        std::cout << std::endl << "set_union check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        auto testVec2(testVecInput2);
+        std::sort(testVec1.begin(), testVec1.end());
+        std::sort(testVec2.begin(), testVec2.end());
+
+        Set::doSetUnion(testVec1, testVec2);
+
+        auto testVec3(testVecInput3);
+        auto testVec4(testVecInput4);
+        std::sort(testVec3.begin(), testVec3.end());
+        std::sort(testVec4.begin(), testVec4.end());
+
+        Set::doSetUnion(testVec3, testVec4);
+    }
+
+    // Set intersection
+    {
+        std::cout << std::endl << "set_intersection check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        auto testVec2(testVecInput2);
+        std::sort(testVec1.begin(), testVec1.end());
+        std::sort(testVec2.begin(), testVec2.end());
+
+        Set::doSetIntersection(testVec1, testVec2);
+
+        auto testVec3(testVecInput3);
+        auto testVec4(testVecInput4);
+        std::sort(testVec3.begin(), testVec3.end());
+        std::sort(testVec4.begin(), testVec4.end());
+
+        Set::doSetIntersection(testVec3, testVec4);
+    }
+
+    // Set difference
+    {
+        std::cout << std::endl << "set_difference check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        auto testVec2(testVecInput2);
+        std::sort(testVec1.begin(), testVec1.end());
+        std::sort(testVec2.begin(), testVec2.end());
+
+        Set::doSetDifference(testVec1, testVec2);
+
+        auto testVec3(testVecInput3);
+        auto testVec4(testVecInput4);
+        std::sort(testVec3.begin(), testVec3.end());
+        std::sort(testVec4.begin(), testVec4.end());
+
+        Set::doSetDifference(testVec3, testVec4);
+    }
+
+    // Set symmetric difference
+    {
+        std::cout << std::endl << "set_symmetric_difference check" << std::endl;
+
+        auto testVec1(testVecInput1);
+        auto testVec2(testVecInput2);
+        std::sort(testVec1.begin(), testVec1.end());
+        std::sort(testVec2.begin(), testVec2.end());
+
+        Set::doSetSymmetricDifference(testVec1, testVec2);
+
+        auto testVec3(testVecInput3);
+        auto testVec4(testVecInput4);
+        std::sort(testVec3.begin(), testVec3.end());
+        std::sort(testVec4.begin(), testVec4.end());
+
+        Set::doSetSymmetricDifference(testVec3, testVec4);
+    }
+
     return EXIT_SUCCESS;
 }
